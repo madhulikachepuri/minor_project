@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TechVolution 2024 Registration Form</title>
+    <style>
+        .size {
+            font-size: 25px;
+        }
+        .title {
+            color: pink;
+        }
+        .color {
+            color: white;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            background-color: black;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .form-container {
+            background-color: black;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
+            width: 90%;
+            max-width: 400px;
+            margin: 20px;
+        }
+        .form-container h1 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        .form-group input, .form-group select {
+            width: 100%;
+            padding: 8px;
+            box-sizing: border-box;
+        }
+        .form-group .gender-options {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+        .form-group .gender-options label {
+            margin-right: 10px;
+        }
+        .form-group .gender-options input {
+            margin-right: 5px;
+        }
+        .submit-button {
+            width: 100%;
+            padding: 10px;
+            background-color: palevioletred;
+            border: none;
+            border-radius: 4px;
+            color: black;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        .submit-button:hover {
+            background-color: palevioletred;
+        }
+        @media (max-width: 600px) {
+            .form-group .gender-options {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            .form-group .gender-options label {
+                margin-bottom: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="form-container">
+        <h1 class="title">TechVolution 2024 Registration Form</h1>
+        <form action="submit_form.php" method="post">
+            <div class="form-group">
+                <label for="full-name" class="color">Full Name:</label>
+                <input type="text" id="full-name" name="full-name" placeholder="enter fullname" required>
+            </div>
+            <div class="form-group">
+                <label for="dob" class="color">Date of Birth:</label>
+                <input type="date" id="dob" name="dob" required>
+            </div>
+            <div class="form-group">
+                <label class="color">Gender:</label>
+                <div class="gender-options">
+                    <label class="color"><input type="radio" name="gender" value="male" required> Male</label>
+                    <label class="color"><input type="radio" name="gender" value="female" required> Female</label>
+                    <label class="color"><input type="radio" name="gender" value="nonbinary" required> Non-binary</label>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="email" class="color">Email Address:</label>
+                <input type="email" id="email" name="email" placeholder="enter your email" required>
+            </div>
+            <div class="form-group">
+                <label for="phone" class="color">Phone Number:</label>
+                <input type="tel" id="phone" name="phone" placeholder="enter your phone number" required>
+            </div>
+            <div class="form-group">
+                <label for="address" class="color">Address:</label>
+                <input type="text" id="address" name="address" placeholder="enter your address" required>
+            </div>
+            <div class="form-group">
+                <label for="city" class="color">City:</label>
+                <input type="text" id="city" name="city" placeholder="enter city" required>
+            </div>
+            <div class="form-group">
+                <label for="state" class="color">State:</label>
+                <select id="state" name="state" required>
+                    <option value="" class="size">Select State</option>
+                    <option value="Telangana" class="size">Telangana</option>
+                    <option value="Andhra Pradesh" class="size">Andhra Pradesh</option>
+                    <option value="TamilNadu" class="size">TamilNadu</option>
+                    <option value="Kerala" class="size">Kerala</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="zip" class="color">Zip Code:</label>
+                <input type="text" id="zip" name="zip" placeholder="enter zipcode" required>
+            </div>
+            <div class="form-group">
+                <label for="event" class="color">Event Preference:</label>
+                <select id="event" name="event" required>
+                    <option value="" class="size">Select Event Preference</option>
+                    <option value="transport engineering" class="size">Transport Engineering</option>
+                    <option value="road safety engineering" class="size">Road Safety Engineering</option>
+                    <option value="project and program management" class="size">Project and Program Management</option>
+                    <option value="property development and related" class="size">Property Development and Related</option>
+                    <option value="building and structural engineering" class="size">Building and Structural Engineering</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="die" class="color">Dietary Restrictions:</label>
+                <input type="text" id="die" name="die" required>
+            </div>
+            <div class="form-group">
+                <label for="shirt-size" class="color">T-Shirt Size:</label>
+                <select id="shirt-size" name="shirt-size" required>
+                    <option value="" class="size">Select T-Shirt Size</option>
+                    <option value="Small" class="size">Small</option>
+                    <option value="Medium" class="size">Medium</option>
+                    <option value="Large" class="size">Large</option>
+                </select>
+            </div>
+            <button type="submit" class="submit-button" onclick="register()">Register</button>
+        </form>
+        <div id="message"></div>
+        <script>
+            function register() {
+                const username = document.getElementById('username').value;
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+            const messageDiv = document.getElementById('message');
+            
+            // Clear previous messages
+            messageDiv.innerHTML = '';
+            messageDiv.innerHTML = 'Registration successful!';
+            messageDiv.style.color = 'green';
+            
+            
+                
+            }
+        </script>
+    </div>
+
+</body>
+</html>
